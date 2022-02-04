@@ -22,10 +22,17 @@ const scene = new THREE.Scene()
  */
 const textureLoader = new THREE.TextureLoader()
 const flagTexture = textureLoader.load('./textures/flag-french.jpg')
-
+/**
+ * Sizes
+ */
+ const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
 /**
  * Test mesh
  */
+
 // Geometry
 const geometry = new THREE.PlaneGeometry(1, 1, 32, 32)
 
@@ -39,6 +46,7 @@ geometry.setAttribute('aRandom', new THREE.BufferAttribute(randoms, 1))
 console.log(geometry);
 
 // Material
+const resolution = new THREE.Vector3(sizes.width, sizes.height, 1);
 const material = new THREE.ShaderMaterial({
     vertexShader: testVertexShader,
     fragmentShader: testFragmentShader,
@@ -47,7 +55,9 @@ const material = new THREE.ShaderMaterial({
         uFrequency: { value: new THREE.Vector2(10,5) },
         uTime: {value: 0}, 
         uColor: {value: new THREE.Color("orange")},
-        uTexture: {value: flagTexture}
+        uTexture: {value: flagTexture},
+        iGlobalTime: {value: 0}, 
+        iResolution: { value: resolution },
     }
 })
 gui.add(material.uniforms.uFrequency.value, 'x').min(0).max(20).step(0.01).name('Frequency X')
@@ -57,13 +67,7 @@ gui.add(material.uniforms.uFrequency.value, 'y').min(0).max(20).step(0.01).name(
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
-/**
- * Sizes
- */
-const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
-}
+
 
 window.addEventListener('resize', () =>
 {
