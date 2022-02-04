@@ -1,12 +1,12 @@
-uniform mat4 projectionMatrix;
-uniform mat4 viewMatrix;
-uniform mat4 modelMatrix;
+// uniform mat4 projectionMatrix;
+// uniform mat4 viewMatrix;
+// uniform mat4 modelMatrix;
 uniform vec2 uFrequency;
 uniform float uTime;
 
-attribute vec3 position; //get attribute from vertex shader
+// attribute vec3 position; //get attribute from vertex shader
 attribute float aRandom;
-attribute vec2 uv;
+// attribute vec2 uv;
 
 varying float vRandom; //send to fragment shader
 varying vec2 vUv;
