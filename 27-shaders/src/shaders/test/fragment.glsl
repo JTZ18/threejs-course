@@ -75,9 +75,9 @@ void main()
 
 	vec3 col = vec3(0.0);
     col = mix( vec3(0.2,0.1,0.4), vec3(0.3,0.05,0.05), f );
-    col = mix( col, vec3(0.9,0.9,0.9), dot(on.zw,on.zw) );
-    col = mix( col, vec3(0.4,0.3,0.3), 0.2 + 0.5*on.y*on.y );
-    col = mix( col, vec3(0.0,0.2,0.4), 0.5*smoothstep(1.2,1.3,abs(on.z)+abs(on.w)) );
+    col = mix( col, vec3(1,0.98,0.98), dot(on.zw,on.zw) );
+    col = mix( col, vec3(0.73,0.1,0.32), 0.2 + 0.5*on.y*on.y );
+    col = mix( col, vec3(0.09,0.26,0.1), 0.5*smoothstep(1.2,1.3,abs(on.z)+abs(on.w)) );
     col = clamp( col*f*2.0, 0.0, 1.0 );
     
 
