@@ -86,6 +86,13 @@ void main()
  	vec3 nor = normalize( vec3( func(p+vec2(e,0.0),kk)-f, 
                                 2.0*e,
                                 func(p+vec2(0.0,e),kk)-f ) );
+
+    vec3 lig = normalize( vec3( 0.9, 0.2, -0.4 ) );
+    float dif = clamp( 0.3+0.7*dot( nor, lig ), 0.0, 1.0 );
+    vec3 lin = vec3(0.70,0.90,0.95)*(nor.y*0.5+0.5) + vec3(0.15,0.10,0.05)*dif;
+    col *= 1.2*lin;
+	col = 1.0 - col;
+	col = 1.1*col*col;
     
     gl_FragColor = vec4( col, 1.0 );
 }
